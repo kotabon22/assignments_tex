@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# LaTeX build directory
+**/build/**
+!**/build/*.pdf
+!**/build/**/*.pdf
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+*.dvi
+*.ps
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.loa
+*.nav
+*.snm
+*.vrb
+*.tmp
+
+# latexmk files
+*.fdb_latexmk
+*.fls
