@@ -1,0 +1,117 @@
+\documentclass{ltjsarticle}  % LuaLaTeX 向け
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{luatexja}
+\usepackage{enumitem}
+\usepackage{luatexja-fontspec}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage[a4paper,top=20mm,bottom=30mm,left=25mm,right=25mm]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+%%% ========================================
+%%%  ここを編集してください
+%%% ========================================
+\date{2026年07月25日}        % 日付
+\title{リスクマネジメント第12回課題}  % タイトル
+\newcommand{\authorname}{安全社会基盤工学 電気システム情報コース\\学籍番号:26720493\\山口紘太郎}  % 氏名
+%%% ========================================
+
+\lstset{
+  language=C,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  frame=single,
+  breaklines=true,
+  captionpos=b,
+  showstringspaces=false,
+  columns=flexible
+}
+
+\setmainjfont[
+  AutoFakeBold = false
+]{IPAexMincho}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{flushright}
+    \@date
+  \end{flushright}
+  \vspace{1cm}
+  \begin{center}
+    {\Large \@title}
+  \end{center}
+  \begin{flushright}
+    {\large \authorname}
+  \end{flushright}
+  \vspace{1.5cm}
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\section{講義の要約}
+原子炉の熱流動と事故時のリスク管理について学んだ。
+原子力発電所では、「止める・冷やす・閉じ込める」の３つの基本安全機能と、それを支える深層防護の考え方が重要であることが説明された。
+また、福島第一原子力発電所事故やチェルノブイリ原子力発電所事故を踏まえ、
+自然災害やテロ対策を含む新規制基準による安全対策の強化について学んだ。
+さらに、安全評価手法として保守的な評価モデル（EM）と現実的な評価モデル（BE）、解析コードの信頼性を確認するV\&V（Verification \& Validation）の考え方が紹介された。
+福島第一原発２号機の解析例では、注水再開が４時間早ければ炉心溶融を回避できた可能性が示され、シビアアクシデントでは迅速な対応が重要であることを学んだ。
+
+\section{福島原発事故の進展の概要}
+２０１１年３月１１日に発生した東日本大震災は，震度６強の揺れを検知し，運転中の福島第一原子力発電所１〜３号機の原子炉はすべて自動停止した．
+停止したいことで，核分裂反応を「止める」機能は正常に動作し，原子炉を「冷やす」機能が起動し始めた．
+しかし，地震によって受電設備や送電鉄塔が損傷し，外部からの電力供給が途絶えた．
+さらに，その後に到達した津波によって原子炉建屋タービン建屋が浸水し，多くの電源盤が使用不可能となった．
+これによって，１〜５号機で，全交流電源が失われ，１・２・４号機では直流電源も失われた．
+
+電源を失ったことで冷却設備は徐々に機能を失い，冷却用の海水ポンプも浸水したため，原子炉の熱を外部へ逃がすことができなくなった．
+原子炉を冷却できない状態にあると，水の蒸発によって原子炉内の水位が低下して燃料棒が露出し燃料を覆う金属が高温となって水蒸気と反応し，
+水素が発生した．
+発生した水素が原子炉無いに蓄積し，水素爆発が発生し１号機と３号機の原子炉建屋が大きく損傷した．
+さらに，４号機でも３号機から流入した水素によって爆発が発生し，原子炉建屋が損傷した．\cite{jaero}
+
+\section{事故における熱流動の挙動}
+地震発生時に，福島第一原子力発電所１〜３号機は自動停止した．
+しかし，２０１１年３月１２日１時２０分頃には１号機の原子炉圧力容器内の圧力が大きく上昇し，
+中央制御室の放射線量も通常時の約１０００倍に増加した．
+２０１１年３月１２日１５時３６分に，建屋内に蓄積したすいそによって１号機で水素爆発が発生した．
+
+２０１１年３月１３日には，３号機で原子炉圧力容器内の圧力が約９気圧から約７２気圧まで急上昇し，
+水位も約３ｍ低下した．その後圧力は大気圧まで低下し，容器から冷却剤が漏れでた可能性が示された．
+
+2011年3月14日11時には3号機で水素爆発が発生した。また、2011年3月14日16時34分に2号機で海水注入が開始されたものの水位は回復せず、燃料が露出した状態となった。さらに、2011年3月14日17時12分には原子炉圧力容器内の圧力が約74気圧まで上昇し、2011年3月15日18時43分には大気圧まで低下したことから、圧力容器の健全性が失われた可能性が示された。\cite{tanaka}
+
+\section{事故の結果，安全対策がどのように変化したのか}
+福島第一原子力発電所事故では，すべての電源を失った場合の注水手段が十分に準備されていなかったことが大きな課題として明らかになった．この教訓を踏まえ，電源車を津波の影響を受けにくい高台に配置し，バッテリーを長時間使用できるようにするなど，さまざまな電源による供給能力の強化が図られた．また，貯水池を設置することで，事故時の注水に必要な水源をあらかじめ確保する対策も講じられた．
+さらに，炉心損傷後にその影響を緩和するための手段が十分に整備されていなかった点も課題であった．そのため，事故後の放射性物質の放出を低減する目的で，原子炉格納容器内の手段の整備やフィルタ・ベント設備の設置などにより，炉心損傷後の影響緩和手段が強化された．
+\cite{jaero}
+
+\begin{thebibliography}{9}
+
+	\bibitem{jaero}
+	日本原子力文化財団，
+	「福島第一原子力発電所事故の概要と教訓」，
+	原子力総合パンフレット
+	\url{https://www.jaero.or.jp/sogo/detail/cat-04-02.html}，
+
+	\bibitem{tanaka}
+	田中俊一，
+	「福島第一原子力発電所事故について―原子炉の立場から―」，
+	日本物理学会主催シンポジウム，2011年6月10日，
+	\url{https://www.jps.or.jp/information/movie/files/tanaka.pdf}，
+
+\end{thebibliography}
+
+\end{document}
