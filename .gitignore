@@ -1,12 +1,34 @@
-# macOS
+
+
+
+# ==========================================
+#  .gitignore for LaTeX assignments
+#  追跡するのは .tex / .pdf / .bib のみ
+# ==========================================
+
+# ---- macOS ----
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
 
-# LaTeX build directory
-**/build/**
+# ---- Windows ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ==========================================
+#  build ディレクトリ
+#  → 中身は無視、ただし PDF だけ追跡する
+# ==========================================
+build/*
+!build/*.pdf
+**/build/*
 !**/build/*.pdf
-!**/build/**/*.pdf
 
-# LaTeX intermediate files
+# ==========================================
+#  LaTeX 中間ファイル(どこにあっても無視)
+# ==========================================
 *.aux
 *.log
 *.out
@@ -15,24 +37,56 @@
 *.lot
 *.bbl
 *.blg
+*.bcf
+*.run.xml
 *.synctex.gz
+*.synctex(busy)
 *.dvi
 *.ps
+*.fdb_latexmk
+*.fls
+*.xdv
+
+# ---- glossaries / acronyms ----
 *.acn
 *.acr
 *.alg
 *.glg
 *.glo
 *.gls
+*.glsdefs
+*.ist
+
+# ---- index ----
 *.idx
 *.ilg
 *.ind
 *.loa
+
+# ---- beamer ----
 *.nav
 *.snm
 *.vrb
-*.tmp
 
-# latexmk files
-*.fdb_latexmk
-*.fls
+# ---- その他一時ファイル ----
+*.tmp
+*.bak
+*.swp
+*.figlist
+*.makefile
+*.fdb
+*.fmt
+*.pre
+*.tdo
+*.upa
+*.upb
+*.xml
+*.auxlock
+
+# ==========================================
+#  エディタ / ツール
+# ==========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
