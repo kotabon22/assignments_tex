@@ -1,0 +1,74 @@
+\documentclass{ltjsarticle}  % LuaLaTeX 向け
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{luatexja}
+\usepackage{enumitem}
+\usepackage{luatexja-fontspec}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage[a4paper,top=20mm,bottom=30mm,left=25mm,right=25mm]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+%%% ========================================
+%%%  ここを編集してください
+%%% ========================================
+\date{2026年08月02日}        % 日付
+\title{半導体デバイス最終}  % タイトル
+\newcommand{\authorname}{山口紘太郎}  % 氏名
+%%% ========================================
+\lstset{
+  language=C,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  frame=single,
+  breaklines=true,
+  captionpos=b,
+  showstringspaces=false,
+  columns=flexible
+}
+
+\setmainjfont[
+  AutoFakeBold = false
+]{IPAexMincho}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{flushright}
+    \@date
+  \end{flushright}
+  \vspace{1cm}
+  \begin{center}
+    {\Large \@title}
+  \end{center}
+  \begin{flushright}
+    {\large \authorname}
+  \end{flushright}
+  \vspace{1.5cm}
+}
+\makeatother
+
+\begin{document}
+\maketitle
+本講義を通して，高電子移動度トランジスタ(HEMT)に興味を持った．
+そこで今回は，HEMTが600°Cに及ぶ極高温環境下で動作するという論文を見つけ，
+その内容について調査することにした．
+\section{HEMTとは}
+HEMTとは，High Electoron Mobility Transistorの略語であり，
+日本語では「高移動度トランジスタ」と呼ばれる．
+本レポートでは，窒化ガリウム(GaN)HEMTを対象とする．
+また，今回取り上げた論文で扱われるSiC（シリコンカーバイド
+
+
+
+
+\end{document}
