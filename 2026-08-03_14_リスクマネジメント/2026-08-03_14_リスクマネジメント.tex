@@ -1,0 +1,106 @@
+\documentclass[10pt]{ltjsarticle}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{luatexja}
+\usepackage{enumitem}
+\setlist{itemsep=0pt, topsep=2pt, parsep=0pt}
+\usepackage{luatexja-fontspec}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage[a4paper,top=10mm,bottom=12mm,left=18mm,right=18mm]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+
+%%% ========================================
+\date{2026年08月03日}
+\title{第14回リスクマネジメント課題}
+\newcommand{\authorname}{学籍番号: 26720493\\山口紘太郎}
+%%% ========================================
+\setmainjfont[
+  AutoFakeBold = false
+]{IPAexMincho}
+
+\setlength{\parskip}{2pt}
+\linespread{0.95}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{flushright}
+    \small\@date
+  \end{flushright}
+  \vspace{0.1cm}
+  \begin{center}
+    {\large \@title}
+  \end{center}
+  \begin{flushright}
+    {\normalsize \authorname}
+  \end{flushright}
+}
+\makeatother
+
+\begin{document}
+{\small
+\maketitle
+
+\section{事故概要と原因}
+本レポートで扱うのは，2020年（令和2年）12月4日に発生した，日本航空904便
+（ボーイング777-200型，機体記号JA8978）の左側エンジン破損に関する事故である．
+令和2年12月4日，那覇空港離陸後の上昇中，機体に振動を伴う異音が発生し，
+機長はエンジンを停止させ那覇空港へ引き返した．着陸後の点検で，
+ファンブレードの破断，カウリング等の一部脱落，胴体・水平尾翼の損傷が
+確認されたが，乗員・乗客189名に負傷者はなかった．
+
+原因は，ファンブレード製造時の研磨工程で溶着した微小な金属塊（ノジュール，
+幅約0.12mm）を起点に亀裂が発生し，これが定期検査でも発見されないまま
+運航が継続されたことで疲労破壊に至ったためと推定される．検査で亀裂が
+発見されなかったのは，用いられた非破壊検査（TAI検査：Thermal Acoustic Image）の
+手法・間隔が，亀裂発生部位の欠陥検出には不十分だったことによる．
+
+\section{技術的側面の対策}
+\subsection{自分の考え}
+TAI検査は行われていたが，2回の検査でも亀裂は発見されなかった．微小な亀裂でも
+重大事故につながりうるため，TAI検査の間隔（当時6500FCごと）を狭めることが
+効果的な対策だと考える．ここで，FCとはフライト回数を意味する．
+
+\subsection{実際の対策}
+TAI検査の間隔を6500FCから1000FCへ
+大幅短縮し，加えて275〜550FCごとにUT（超音波探傷）検査を導入した．
+FAAも耐空性改善命令で，次の飛行までのTAI検査実施と，その後のTAI検査・UT
+繰り返し実施を義務化した．
+
+\section{経営上の対策}
+
+\subsection{自分の考え}
+亀裂の合否基準を明確にし，発見時は即使用停止とすることが重要である．
+検査間隔の短縮も踏まえ，コストより安全を優先する姿勢が大事だと考える．
+
+\subsection{実際の対策}
+TAI検査の合否判断は個人ではなくチームで検討する方式に改訂された．FAAは
+ほぼゼロ許容に近い厳格な運用へ移行し，国交省は対象機の運航停止を指示した．
+
+\section{考察}
+発見や事故発生がわずかでも遅れていれば，死傷者を伴う事故になっていた可能性が
+あり，今回無傷であったのは結果論に過ぎないと考えるべきである．
+実際の対策を見ると，技術的な検出限界を克服したのではなく，検査の頻度と判断基準を
+引き上げたことで，「見逃しの確率を下げた」に近い．
+TAI検査は非破壊検査として有効だが，検出が難しい部分が存在し，リスク管理にも限界が
+あることが，この事故によって示されたといえる．
+
+事故当時の時点でも，今回行われた対策は実現できたものも多い．検査期間の短縮や
+合否判定なども即時対策ができた．
+また，非破壊検査では，コストがかかるかもしれないが，TAI検査のみの検査ではなく，複数の検査技術を用いて
+検査を行い，単一技術を過信しないことが重要であると感じた．
+\begin{thebibliography}{9}
+
+\bibitem{jtsb2022}
+運輸安全委員会,
+「航空重大インシデント調査報告書 AI2022-5 --- 日本航空株式会社所属 ボーイング式777-200型 JA8978 発動機の破損（破片が当該発動機のケースを貫通した場合に限る）に準ずる事態」,
+2022年8月5日議決.
+\url{https://jtsb.mlit.go.jp/aircraft/rep-inci/AI2022-5-1-JA8978.pdf}
+
+\end{thebibliography}
+
+\end{document}
